@@ -17,6 +17,7 @@ const user: Module<user, GlobalDataProps> = {
     },
     loginOut(state) {
       state.username = "";
+      localStorage.removeItem("token");
     },
   },
 };
