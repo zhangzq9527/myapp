@@ -12,21 +12,24 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 let lastTime = new Date().getTime();
 let currentTime: number;
+const token = localStorage.getItem("token");
 const handleTime = () => {
   currentTime = new Date().getTime();
-  if (currentTime - lastTime > Number(timeOptions.timeOut)) {
-    console.log(timeOptions.timeOut);
-    lastTime = new Date().getTime();
-    ElMessage({
-      message: "长时间未操作，登陆已过期",
-      type: "warning",
-      showClose: true,
-      center: true,
-    });
-    localStorage.removeItem("token");
-    router.push("/");
-  } else {
-    lastTime = new Date().getTime();
+  if (token) {
+    if (currentTime - lastTime > Number(timeOptions.timeOut)) {
+      console.log(timeOptions.timeOut);
+      lastTime = new Date().getTime();
+      ElMessage({
+        message: "长时间未操作，登陆已过期",
+        type: "warning",
+        showClose: true,
+        center: true,
+      });
+      localStorage.removeItem("token");
+      router.push("/");
+    } else {
+      lastTime = new Date().getTime();
+    }
   }
 };
 </script>
