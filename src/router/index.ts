@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Login from "../components/Login.vue";
-import index from "../components/index.vue";
+import Index from "../components/Index.vue";
+import Register from "../components/Register.vue";
 import { ElMessage } from "element-plus";
 
 const routes: Array<RouteRecordRaw> = [
@@ -13,12 +14,20 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/index",
-    name: "index",
-    component: index,
+    path: "/Index",
+    name: "Index",
+    component: Index,
     meta: {
       title: "首页",
       requireAuth: true,
+    },
+  },
+  {
+    path: "/Register",
+    name: "Register",
+    component: Register,
+    meta: {
+      title: "注册",
     },
   },
 ];
@@ -36,7 +45,7 @@ router.beforeEach((to, from, next) => {
   }
   /* 判断该路由是否需要登录权限 */
   if (to.matched.some((record) => record.meta.requireAuth)) {
-    const EXPIRESTIME = 6000;
+    const EXPIRESTIME = 600000;
     let token: any = localStorage.getItem("token");
     token = JSON.parse(token);
     if (token) {

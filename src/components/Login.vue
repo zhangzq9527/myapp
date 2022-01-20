@@ -23,7 +23,9 @@
         <el-button type="primary" @click="submitLogin()" class="loginbtn">
           登录
         </el-button>
-        <el-button type="primary">注册</el-button>
+        <router-link to="/Register" style="text-decoration: none">
+          <el-button type="primary">注册</el-button>
+        </router-link>
       </el-form-item>
     </el-form>
   </div>
@@ -81,7 +83,7 @@ const submitLogin = async () => {
           store.commit("login", paramss);
           localStorage.setItem("token", JSON.stringify(paramss));
           console.log(paramss);
-          router.push("/index");
+          router.push("/Index");
         } else {
           ElMessage({
             message: "账号或密码错误",
@@ -106,6 +108,7 @@ const submitLogin = async () => {
 }
 
 .loginbtn {
+  margin-left: 50px;
   margin-right: 40px;
 }
 </style>
