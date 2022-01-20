@@ -56,8 +56,9 @@ const rules = reactive({
 })
 
 const submitLogin = async () => {
-  if (!loginFormRules.value) return
-  else
+  if (!loginFormRules.value) {
+    return
+  } else {
     try {
       if (await loginFormRules.value.validate()) {
         if (loginForm.username !== '' && loginForm.password !== '') {
@@ -89,6 +90,7 @@ const submitLogin = async () => {
     } catch (error) {
       console.log(error)
     }
+  }
 }
 </script>
 

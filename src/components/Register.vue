@@ -77,8 +77,9 @@ const rules = reactive({
 })
 
 const submitRegister = async () => {
-  if (!registerFormRules.value) return
-  else
+  if (!registerFormRules.value) {
+    return
+  } else {
     try {
       if (await registerFormRules.value.validate()) {
         ElMessage({
@@ -92,6 +93,7 @@ const submitRegister = async () => {
     } catch (error) {
       console.log(error)
     }
+  }
 }
 </script>
 <style lang="scss" scoped>
