@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Login from '../components/Login.vue'
-import Index from '../components/Index.vue'
+import index from '../components/index.vue'
 import Register from '../components/Register.vue'
 import { ElMessage } from 'element-plus'
 
@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/Index',
     name: 'Index',
-    component: Index,
+    component: index,
     meta: {
       title: '首页',
       requireAuth: true
