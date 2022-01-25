@@ -36,14 +36,14 @@ const registerForm = reactive({
   checkpassword: ''
 })
 const registerFormRules = ref()
-const validatePass = (rule: any, value: any, callback: any) => {
+const validatePass = (rule: any, value: string, callback: any) => {
   if (value === '') {
     callback(new Error('请输入密码'))
   } else {
     callback()
   }
 }
-const validatePass2 = (rule: any, value: any, callback: any) => {
+const validatePass2 = (rule: any, value: string, callback: any) => {
   if (value === '') {
     callback(new Error('请再次输入密码'))
   } else if (value !== registerForm.password) {

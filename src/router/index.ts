@@ -40,19 +40,20 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   /* 页面title */
   if (to.meta.title) {
-    const title: any = to.meta.title
-    document.title = title
+    document.title = <string>to.meta.title
   }
   /* 判断该路由是否需要登录权限 */
   if (to.matched.some(record => record.meta.requireAuth)) {
-    const EXPIRESTIME = 600000
-    let token: any = localStorage.getItem('token')
+    const EXPIRESTIME = 60000
+    console.log(sessionStorage.getItem('vuex'))
+    let token: any = sessionStorage.getItem('vuex')
     token = JSON.parse(token)
+    console.log(token)
     if (token) {
       const date = new Date().getTime()
       // 如果大于就是过期了，如果小于或等于就还没过期
-      if (date - Number(token.startTime) > EXPIRESTIME) {
-        localStorage.removeItem('token')
+      if (date - Number(token.Login.user.startTime) > EXPIRESTIME) {
+        sessionStorage.removeItem('vuex')
         ElMessage({
           message: '登录已过期，请重新登录',
           type: 'warning',

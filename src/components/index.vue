@@ -13,8 +13,8 @@ import { useStore } from '../store/index'
 
 const store = useStore()
 const router = useRouter()
-const username = computed(() => store.state.Login.username)
-const password = computed(() => store.state.Login.password)
+const username = computed(() => store.state.Login.user.username)
+const password = computed(() => store.state.Login.user.password)
 const quitLogin = () => {
   store.commit('loginOut')
   router.push('/')

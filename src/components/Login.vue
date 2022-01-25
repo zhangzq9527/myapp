@@ -69,14 +69,12 @@ const submitLogin = async () => {
             center: true
           })
           const paramss = {
-            name: 'token',
             username: loginForm.username,
             password: loginForm.password,
             startTime: new Date().getTime()
           }
           store.commit('login', paramss)
-          localStorage.setItem('token', JSON.stringify(paramss))
-          console.log(paramss)
+          console.log(sessionStorage.getItem('vuex'))
           router.push('/Index')
         } else {
           ElMessage({

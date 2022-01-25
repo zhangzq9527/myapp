@@ -1,3 +1,3 @@
 export const timeOptions = {
-  timeOut: '6000'
+  timeOut: '600000'
 }

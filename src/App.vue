@@ -12,12 +12,11 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 let lastTime = new Date().getTime()
 let currentTime: number
-const token = localStorage.getItem('token')
+const token = sessionStorage.getItem('vuex')
 const handleTime = () => {
   currentTime = new Date().getTime()
   if (token) {
     if (currentTime - lastTime > Number(timeOptions.timeOut)) {
-      console.log(timeOptions.timeOut)
       lastTime = new Date().getTime()
       ElMessage({
         message: '长时间未操作，登陆已过期',
@@ -25,7 +24,7 @@ const handleTime = () => {
         showClose: true,
         center: true
       })
-      localStorage.removeItem('token')
+      localStorage.removeItem('vuex')
       router.push('/')
     } else {
       lastTime = new Date().getTime()

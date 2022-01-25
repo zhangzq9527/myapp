@@ -2,22 +2,30 @@ import { GlobalDataProps } from '../store/index'
 import { Module } from 'vuex'
 
 export interface user {
-  username: string
-  password: string
+  user: {
+    username: string
+    password: string
+    startTime: string
+  }
 }
 const user: Module<user, GlobalDataProps> = {
   state: {
-    username: '',
-    password: ''
+    user: {
+      username: '',
+      password: '',
+      startTime: ''
+    }
   },
   mutations: {
     login(state, payload) {
-      state.username = payload.username
-      state.password = payload.password
+      state.user.username = payload.username
+      state.user.password = payload.password
+      state.user.startTime = payload.startTime
     },
     loginOut(state) {
-      state.username = ''
-      localStorage.removeItem('token')
+      console.log('1' + sessionStorage.getItem('vuex'))
+      sessionStorage.removeItem('vuex')
+      console.log('2' + sessionStorage.getItem('vuex'))
     }
   }
 }
