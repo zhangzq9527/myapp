@@ -16,7 +16,7 @@ const router = useRouter()
 const username = computed(() => store.state.Login.user.username)
 const password = computed(() => store.state.Login.user.password)
 const quitLogin = () => {
-  store.commit('loginOut')
+  sessionStorage.removeItem('vuex')
   router.push('/')
   ElMessage({
     message: '已退出登录',

@@ -45,10 +45,8 @@ router.beforeEach((to, from, next) => {
   /* 判断该路由是否需要登录权限 */
   if (to.matched.some(record => record.meta.requireAuth)) {
     const EXPIRESTIME = 60000
-    console.log(sessionStorage.getItem('vuex'))
     let token: any = sessionStorage.getItem('vuex')
     token = JSON.parse(token)
-    console.log(token)
     if (token) {
       const date = new Date().getTime()
       // 如果大于就是过期了，如果小于或等于就还没过期
