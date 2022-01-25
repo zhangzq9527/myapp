@@ -60,30 +60,29 @@ const submitLogin = async () => {
     return
   } else {
     try {
-      if (await loginFormRules.value.validate()) {
-        if (loginForm.username !== '' && loginForm.password !== '') {
-          ElMessage({
-            message: '登录成功',
-            type: 'success',
-            showClose: true,
-            center: true
-          })
-          const paramss = {
-            username: loginForm.username,
-            password: loginForm.password,
-            startTime: new Date().getTime()
-          }
-          store.commit('login', paramss)
-          console.log(sessionStorage.getItem('vuex'))
-          router.push('/Index')
-        } else {
-          ElMessage({
-            message: '账号或密码错误',
-            type: 'error',
-            showClose: true,
-            center: true
-          })
+      await loginFormRules.value.validate()
+      if (loginForm.username !== '' && loginForm.password !== '') {
+        ElMessage({
+          message: '登录成功',
+          type: 'success',
+          showClose: true,
+          center: true
+        })
+        const paramss = {
+          username: loginForm.username,
+          password: loginForm.password,
+          startTime: new Date().getTime()
         }
+        store.commit('login', paramss)
+        console.log(sessionStorage.getItem('vuex'))
+        router.push('/Index')
+      } else {
+        ElMessage({
+          message: '账号或密码错误',
+          type: 'error',
+          showClose: true,
+          center: true
+        })
       }
     } catch (error) {
       console.log(error)
